@@ -1,7 +1,7 @@
 # Rent Car: NodeJS/Typescript Backend Application #
 
 ## Stacks: ##
-- Typescript language
+- Docker/Docker Compose
 - Express as Web Framework for NodeJS
 - TypeORM for Object-relational-model
 - Postgres as principal RDBMS    
