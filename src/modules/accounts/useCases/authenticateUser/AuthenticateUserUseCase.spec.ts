@@ -2,15 +2,23 @@ import { AppError } from "@shared/errors/AppError";
 import { UserRepositoryMock } from "@modules/accounts/repositories/mock/UsersRepositoryMock";
 import { CreateUserUseCase } from "@modules/accounts/useCases/createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "@modules/accounts/useCases/authenticateUser/AuthenticateUserUseCase";
+import { IUsersTokenRepository } from "@modules/accounts/repositories/IUsersTokenRepository";
+import { UsersTokenRepositoryMock } from "@modules/accounts/repositories/mock/UsersTokenRepositoryMock";
+import { IDateProvider } from "@shared/container/providers/dateprovider/IDateProvider";
+import { DayjsDateProvider } from "@shared/container/providers/dateprovider/implementations/DayjsDateProvider";
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let userRepositoryMock: UserRepositoryMock;
 let createUserUseCase: CreateUserUseCase;
+let usersTokenRepository: IUsersTokenRepository;
+let dateProvider: IDateProvider;
 
 describe("Authenticate user", () => {
     beforeEach(() => {
+        dateProvider = new DayjsDateProvider();
+        usersTokenRepository = new UsersTokenRepositoryMock();
         userRepositoryMock = new UserRepositoryMock();
-        authenticateUserUseCase = new AuthenticateUserUseCase(userRepositoryMock);
+        authenticateUserUseCase = new AuthenticateUserUseCase(userRepositoryMock, usersTokenRepository, dateProvider);
         createUserUseCase = new CreateUserUseCase(userRepositoryMock);
     });
 
