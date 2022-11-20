@@ -7,6 +7,8 @@ import swaggerFile from "@root/src/swagger.json";
 import { AppError } from "@shared/errors/AppError";
 import { AppDataSource } from "@shared/infra/typeorm/database/index";
 import "@shared/container";
+import "dotenv/config";
+import upload from "@config/upload";
 
 // import swaggerAutogen from "swagger-autogen"
 
@@ -19,7 +21,7 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
             message: err.message
         });
     }
-
+    
     return response.status(500).json({
         status: "error",
         message: `Internal server error - ${err.message}`
@@ -28,7 +30,8 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
 // const endpointsFiles = ["./src/routes/categories.routes.ts"]
 // swaggerAutogen("./swagger-auto.json", endpointsFiles);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-
+app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`))
+app.use("/cars", express.static(`${upload.tmpFolder}/cars`))
 
 AppDataSource.initialize()
     .then(() => {
