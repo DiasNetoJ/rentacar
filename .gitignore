@@ -108,3 +108,6 @@ dist
 
 # Temp folder
 tmp/
+
+# config files
+datasource-config.ts
