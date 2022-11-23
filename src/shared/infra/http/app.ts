@@ -9,11 +9,13 @@ import { AppDataSource } from "@shared/infra/typeorm/database/index";
 import "@shared/container";
 import "dotenv/config";
 import upload from "@config/upload";
+import cors from "cors";
 
 // import swaggerAutogen from "swagger-autogen"
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 app.use(router);
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof AppError) {
