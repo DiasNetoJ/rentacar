@@ -7,9 +7,7 @@ import { RateLimiterRedis } from "rate-limiter-flexible";
 const redisClient = createClient({
     url: 'redis://redis:6379'
 });
-/*{
-    url: `redis://${process.env.REDIS_USERNAME}:${process.env.REDIS_PASSWORD}@${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`
-}*/
+
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
 // redisClient.connect();

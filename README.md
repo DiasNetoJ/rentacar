@@ -7,6 +7,7 @@
 - Postgres as principal RDBMS    
 - Redis for cache
 - AWS S3 as storage for files
+- Sentry as error monitoring
 - Tsyringe for dependency injection container    
 - Jest for unit tests
 - Supertest for integration tests
