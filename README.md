@@ -5,6 +5,8 @@
 - Express as Web Framework for NodeJS
 - TypeORM for Object-relational-model
 - Postgres as principal RDBMS    
+- Redis for cache
+- AWS S3 as storage for files
 - Tsyringe for dependency injection container    
 - Jest for unit tests
 - Supertest for integration tests

@@ -10,10 +10,12 @@ import "@shared/container";
 import "dotenv/config";
 import upload from "@config/upload";
 import cors from "cors";
+import rateLimiter from "./middlewares/rateLimiter";
 
 // import swaggerAutogen from "swagger-autogen"
 
 const app = express();
+app.use(rateLimiter);
 app.use(express.json());
 app.use(cors())
 app.use(router);
